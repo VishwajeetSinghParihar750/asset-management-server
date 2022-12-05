@@ -7,6 +7,11 @@ const { hashPassword } = require("../util/auth");
 
 const router = express.Router();
 
+// random testing
+router.get("/register", (req, res) => {
+  res.json({ message: "hi" });
+});
+
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
 
