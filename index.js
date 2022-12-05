@@ -10,7 +10,7 @@ require("dotenv").config();
 
 const app = express();
 
-// connecting to databasr
+// connecting to database
 mongoose
   .connect(process.env.MONGO_URI, { dbName: "assetManagementDb" })
   .then(() => console.log("DB CONNECTED..."))
