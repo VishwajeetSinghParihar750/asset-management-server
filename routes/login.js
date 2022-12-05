@@ -38,13 +38,20 @@ router.post("/login", async (req, res) => {
     process.env.JWT_SECRET_KEY
   );
 
-  res.json({
-    JWT_TOKEN: jwtToken,
-    email: userWithEmail.email,
-    name: userWithEmail.name,
-    teams: userWithEmail.teams,
-    messages: userWithEmail.messages,
-  });
+  res
+    .cookie("JWT_TOKEN", jwtToken, {
+      maxAge: 86400000,
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+    })
+    .json({
+      JWT_TOKEN: jwtToken,
+      email: userWithEmail.email,
+      name: userWithEmail.name,
+      teams: userWithEmail.teams,
+      messages: userWithEmail.messages,
+    });
 });
 
 module.exports = router;
