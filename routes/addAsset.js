@@ -25,7 +25,7 @@ router.post("/addAsset", async (req, res) => {
     return assetObj.asset._id == assetId;
   });
   if (assetObj) {
-    assetObj.count = "" + (+assetObj.count + count);
+    assetObj.count = "" + (parseInt(assetObj.count) + parseInt(count));
     target.save();
   } else {
     return res.status(400).json("asset does not exist !");
